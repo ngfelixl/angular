@@ -1,0 +1,8 @@
+steps:
+  - label: windows-test
+    command: "yarn install --frozen-lockfile --non-interactive && yarn bazel test //tools/ts-api-guardian:all"
+    plugins:
+      - https://github.com/filipesilva/docker-buildkite-plugin.git#1bd961d8601a26af69194ef21fd639df3840da5c:
+          image: "stefanscherer/node-windows:10.13.0"
+    agents:
+      windows: true
