@@ -1737,6 +1737,31 @@ export class FormArray extends AbstractControl {
   }
 
   /**
+   * Move a control from one position to another
+   *
+   * @param from Index of the array item to move
+   * @param to Index of the target item position
+   */
+  moveControl(from: number, to: number): void {
+    this._throwIfControlMissing(from);
+    this._throwIfControlMissing(to);
+
+    if (from === to) {
+      return;
+    }
+
+    const delta = to > from ? 1 : -1;
+    const controlToMove = this.at(from);
+
+    for (let i = from; i * delta < to * delta; i += delta) {
+      this._throwIfControlMissing(i + delta);
+      this.setControl(i, this.at(i + delta));
+    }
+
+    this.setControl(to, controlToMove);
+  }
+
+  /**
    * Length of the control array.
    */
   get length(): number { return this.controls.length; }

@@ -172,6 +172,7 @@ export declare class FormArray extends AbstractControl {
     at(index: number): AbstractControl;
     getRawValue(): any[];
     insert(index: number, control: AbstractControl): void;
+    moveControl(from: number, to: number): void;
     patchValue(value: any[], options?: {
         onlySelf?: boolean;
         emitEvent?: boolean;
@@ -326,7 +327,8 @@ export declare class FormGroupName extends AbstractFormGroupDirective implements
 }
 
 export declare class FormsModule {
-    static withConfig(opts: { warnOnDeprecatedNgFormSelector?: 'never' | 'once' | 'always';
+    static withConfig(opts: {
+        warnOnDeprecatedNgFormSelector?: 'never' | 'once' | 'always';
     }): ModuleWithProviders<FormsModule>;
 }
 
@@ -480,7 +482,8 @@ export declare class RangeValueAccessor implements ControlValueAccessor {
 }
 
 export declare class ReactiveFormsModule {
-    static withConfig(opts: { warnOnNgModelWithFormControl: 'never' | 'once' | 'always';
+    static withConfig(opts: {
+        warnOnNgModelWithFormControl: 'never' | 'once' | 'always';
     }): ModuleWithProviders<ReactiveFormsModule>;
 }
 
